@@ -53,7 +53,7 @@ pipeline {
                 sh "docker rmi docker-prod.imio.be/imioweb/mutual:latest"
                 sh "docker rmi docker-prod.imio.be/imioweb/mutual:$BUILD_ID"
                 sh "mco shell run 'docker pull docker-prod.imio.be/imioweb/mutual:$BUILD_ID' -I /^pre-prod3.imio.be/"
-                sh "mco shell run 'systemctl restart imioweb-website.service' -I /^pre-prod3.imio.be/"
+                sh "mco shell run 'systemctl restart website-imioweb.service' -I /^pre-prod3.imio.be/"
             }
         }
     }
