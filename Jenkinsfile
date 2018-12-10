@@ -33,8 +33,8 @@ pipeline {
                 }
             }
             steps {
-                sh "mco shell run 'docker pull docker-staging.imio.be/imioweb/mutual:$BUILD_ID' -I /^staging.imio.be/"
-                sh "mco shell run 'systemctl restart imioweb.service' -I /^staging.imio.be/"
+                // sh "mco shell run 'docker pull docker-staging.imio.be/imioweb/mutual:$BUILD_ID' -I /^staging.imio.be/"
+                // sh "mco shell run 'systemctl restart imioweb.service' -I /^staging.imio.be/"
             }
         }
         stage('Deploy to prod') {
@@ -52,8 +52,8 @@ pipeline {
                 sh "docker rmi docker-staging.imio.be/imioweb/mutual:$BUILD_ID"
                 sh "docker rmi docker-prod.imio.be/imioweb/mutual:latest"
                 sh "docker rmi docker-prod.imio.be/imioweb/mutual:$BUILD_ID"
-                sh "mco shell run 'docker pull docker-prod.imio.be/imioweb/mutual:$BUILD_ID' -I /^imioweb.imio.be/"
-                sh "mco shell run 'systemctl restart imioweb.service' -I /^imioweb.imio.be/"
+                sh "mco shell run 'docker pull docker-prod.imio.be/imioweb/mutual:$BUILD_ID' -I /^pre-prod3.imio.be/"
+                sh "mco shell run 'systemctl restart imioweb-website.service' -I /^pre-prod3.imio.be/"
             }
         }
     }
