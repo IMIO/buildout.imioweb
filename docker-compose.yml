@@ -5,8 +5,8 @@ services:
       context: .
     image: imioweb
     volumes:
-      - ./var/blobstorage:/home/imio/plone/var/blobstorage
-      - ./var/filestorage:/home/imio/plone/var/filestorage
+      - ./var/blobstorage:/home/imio/imio-website/var/blobstorage
+      - ./var/filestorage:/home/imio/imio-website/var/filestorage
     command: zeoserver fg
     expose:
       - 8100
