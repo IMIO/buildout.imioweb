@@ -6,7 +6,6 @@ ENV PATH="/home/imio/.local/bin:${PATH}" \
     PROJECT_ID=imioweb \
     HOME=/home/imio
 RUN mkdir /home/imio/imio-website
-COPY docker-entrypoint.sh /
 COPY Makefile *.cfg *.txt /home/imio/imio-website/
 RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev libssl-dev libxml2-dev libxslt1-dev libbz2-dev libffi-dev libjpeg62-dev libopenjp2-7-dev zlib1g-dev python-dev" \
   && runDeps="poppler-utils wv rsync lynx netcat libxml2 libxslt1.1 libjpeg62 libtiff5 libopenjp2-7" \
