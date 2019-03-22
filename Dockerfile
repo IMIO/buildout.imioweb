@@ -15,7 +15,7 @@ RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev l
   && pip install -I -r requirements.txt \
   && ln -fs prod.cfg buildout.cfg \
   && buildout \
-  && chown imio:imio -R /home/imio/imio-website/ && chown imio:imio /docker-entrypoint.sh && chmod +x /docker-entrypoint.sh \
+  && chown imio:imio -R /home/imio/imio-website/ \
   && apt-get remove -y $buildDeps \
   && apt-get install -y $runDeps \
   && apt-get autoremove -y \

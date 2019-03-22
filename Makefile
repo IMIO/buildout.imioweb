@@ -19,7 +19,7 @@ run: bin/instance
 	bin/instance fg
 
 docker-image:
-	docker build --pull -t docker-staging.imio.be/imioweb/mutual:latest .
+	docker build --pull -t imioweb/mutual:latest .
 
 cleanall:
 	rm -fr develop-eggs downloads eggs parts .installed.cfg lib include bin .mr.developer.cfg local/
