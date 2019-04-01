@@ -23,5 +23,5 @@ RUN buildDeps="libpq-dev wget git python-virtualenv gcc libc6-dev libpcre3-dev l
 WORKDIR /home/imio/imio-website
 EXPOSE 8080
 USER imio
-HEALTHCHECK --start-period=15s --timeout=5s --interval=1m \
-  CMD curl --fail http://127.0.0.1:8080/ || exit 1
+HEALTHCHECK --start-period=25s --timeout=5s --interval=1m \
+  CMD nc -z -w5 127.0.0.1 8080 || exit 1
