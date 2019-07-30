@@ -24,7 +24,15 @@ docker-image:
 cleanall:
 	rm -fr develop-eggs downloads eggs parts .installed.cfg lib include bin .mr.developer.cfg local/
 
-#rsync:
-
 bash:
 	docker-compose run --rm -p 8080:8080 -u imio instance bash
+
+rsync:
+	rsync -rP imio@pre-prod3.imio.be:/srv/instances/imioweb/filestorage/Data.fs var/filestorage/Data.fs
+	rsync -r --info=progress2 imio@pre-prod3.imio.be:/srv/instances/imioweb/blobstorage/ var/blobstorage/
+
+dev:
+	ln -fs dev.cfg buildout.cfg
+	if [ -f /usr/bin/virtualenv-2.7 ] ; then virtualenv-2.7 .;else virtualenv -p python2.7 .;fi
+	./bin/pip install -r requirements.txt
+	./bin/buildout -t 30
