@@ -1,7 +1,7 @@
 FROM docker-staging.imio.be/base:alpinepy3 as builder
 ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.11.4 \
-  SETUPTOOLS=39.1.0 \
+  ZC_BUILDOUT=2.13.2 \
+  SETUPTOOLS=41.0.1 \
   WHEEL=0.31.1 \
   PLONE_MAJOR=5.2 \
   PLONE_VERSION=5.2.0
@@ -32,8 +32,8 @@ RUN su -c "buildout -c prod.cfg" -s /bin/sh imio
 FROM docker-staging.imio.be/base:alpinepy3
 
 ENV PIP=9.0.3 \
-  ZC_BUILDOUT=2.11.4 \
-  SETUPTOOLS=39.1.0 \
+  ZC_BUILDOUT=2.13.2 \
+  SETUPTOOLS=41.0.1 \
   WHEEL=0.31.1 \
   PLONE_VERSION=4.3.18 \
   TZ=Europe/Brussel
