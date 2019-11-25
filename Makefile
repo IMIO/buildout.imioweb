@@ -1,5 +1,7 @@
 #!/usr/bin/make
 
+IMAGE_NAME="docker-staging.imio.be/imioweb/mutual:alpine"
+
 build-dev: bin/pip
 	ln -fs dev.cfg buildout.cfg
 	bin/pip install -I -r requirements.txt
@@ -44,3 +46,8 @@ dev-py3: buildout.cfg
 	python3 -m venv .
 	./bin/pip install -r requirements.txt
 	./bin/buildout -t 30
+
+
+eggs:  ## Copy eggs from docker image to speed up docker build
+	-docker run --entrypoint='' $(IMAGE_NAME) tar -c -C /plone eggs | tar x
+	mkdir -p eggs
