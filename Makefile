@@ -20,8 +20,8 @@ bin/pip:
 run: bin/instance
 	bin/instance fg
 
-docker-image:
-	docker build --pull -t imioweb/mutual:latest .
+docker-image: eggs
+	docker build --pull -t imioweb/mutual:alpinepy3 .
 
 cleanall:
 	rm -fr develop-eggs downloads eggs parts .installed.cfg lib include bin .mr.developer.cfg local/
