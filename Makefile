@@ -36,3 +36,8 @@ dev:
 	if [ -f /usr/bin/virtualenv-2.7 ] ; then virtualenv-2.7 .;else virtualenv -p python2.7 .;fi
 	./bin/pip install -r requirements.txt
 	./bin/buildout -t 30
+
+dev-py3:
+	python3 -m venv .
+	./bin/pip install -r requirements.txt
+	./bin/buildout -t 30
