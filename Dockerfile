@@ -1,4 +1,4 @@
-FROM docker-staging.imio.be/base:alpinepy3
+FROM docker-staging.imio.be/base:alpinepy3 as builder
 ENV PIP=9.0.3 \
   ZC_BUILDOUT=2.11.4 \
   SETUPTOOLS=39.1.0 \
@@ -11,7 +11,6 @@ RUN apk add --update --no-cache --virtual .build-deps \
   gcc \
   git \
   libc-dev \
-  libffi-dev \
   libffi-dev \
   libjpeg-turbo-dev \
   libpng-dev \
