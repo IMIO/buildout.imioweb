@@ -25,15 +25,18 @@ services:
     deploy:
       replicas: 2
     labels:
-        - "traefik.frontend.rule=Host:localhost; AddPrefix: /VirtualHostBase/http/localhost/plone/VirtualHostRoot"
+      - "traefik.enable=true"
+      - "traefik.http.routers.instance.rule=Host(`portal.localhost`)"
+      - "traefik.http.routers.instance.entrypoints=web"
+      - "traefik.http.services.instance.loadbalancer.server.port=8080"
   reverseproxy:
-    image: traefik
-    command: --api --docker
+    image: traefik:2.0
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entryPoints.web.address=:80"
     ports:
-      - "80:80"
-      - "8000:8080"
+      - "80:80"     # The HTTP port
+      - "8000:8080" # The Web UI (enabled by --api)
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
-networks:
-  proxy:
+      - /var/run/docker.sock:/var/run/docker.sock # So that Traefik can listen to the Docker events
