@@ -58,7 +58,7 @@ LABEL plone=$PLONE_VERSION \
   description="Plone image for iA.Smartweb" \
   maintainer="Imio"
 
-COPY --from=builder /usr/local/lib/python2.7/site-packages /usr/local/lib/python2.7/site-packages
+COPY --from=builder /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
 COPY --chown=imio --from=builder /plone .
 
 COPY --chown=imio docker-initialize.py docker-entrypoint.sh /
