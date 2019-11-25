@@ -37,7 +37,10 @@ dev:
 	./bin/pip install -r requirements.txt
 	./bin/buildout -t 30
 
-dev-py3:
+buildout.cfg:
+	ln -fs dev.cfg buildout.cfg
+
+dev-py3: buildout.cfg
 	python3 -m venv .
 	./bin/pip install -r requirements.txt
 	./bin/buildout -t 30
