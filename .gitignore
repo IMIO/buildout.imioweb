@@ -24,3 +24,5 @@ local/
 nginx.conf
 rsync.sh
 eggs/
+data
+lib64
