@@ -35,8 +35,12 @@ ENV PIP=9.0.3 \
   ZC_BUILDOUT=2.13.2 \
   SETUPTOOLS=41.0.1 \
   WHEEL=0.31.1 \
-  PLONE_VERSION=4.3.18 \
-  TZ=Europe/Brussel
+  PLONE_VERSION=5.2.0 \
+  TZ=Europe/Brussel \
+  ZEO_HOST=zeo \
+  ZEO_PORT=8100 \
+  HOSTNAME_HOST=local \
+  PROJECT_ID=imio
 
 RUN mkdir /data && chown imio:imio -R /data
 VOLUME /data/blobstorage
@@ -64,16 +68,9 @@ COPY --chown=imio --from=builder /plone .
 COPY --chown=imio docker-initialize.py docker-entrypoint.sh /
 USER imio
 EXPOSE 8080
-HEALTHCHECK --interval=1m --timeout=5s --start-period=45s \
+HEALTHCHECK --interval=1m --timeout=5s --start-period=30s \
   CMD nc -z -w5 127.0.0.1 8080 || exit 1
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["start"]
+CMD ["console"]
 
-
-
-ENV ZEO_HOST=db \
- ZEO_PORT=8100 \
- HOSTNAME_HOST=local \
- PROJECT_ID=imio \
- SMTP_QUEUE_DIRECTORY=/data/queue

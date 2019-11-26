@@ -5,23 +5,23 @@ services:
       context: .
     image: imioweb
     volumes:
-      - ./var/blobstorage:/home/imio/imio-website/var/blobstorage
-      - ./var/filestorage:/home/imio/imio-website/var/filestorage
-    command: zeoserver fg
-    expose:
-      - 8100
+      - ./data/blobstorage:/data/blobstorage
+      - ./data/filestorage:/data/filestorage
     healthcheck:
-      # test: ["CMD-SHELL", "nc", "-z", "w5", "127.0.0.1", "8100", "||", "exit", "1"]
       test: ['CMD', 'nc', '-z', '-w5', '127.0.0.1', '8100']
+    command: zeoserver fg
   instance:
     image: imioweb
     expose:
       - 8080
-    links:
-      - zeo:db
     depends_on:
       - reverseproxy
-    command: fg
+    environment:
+      - ENV=dev
+      - ZEO_HOST=zeo
+      - ZEO_PORT=8100
+    volumes:
+      - ./data/blobstorage:/data/blobstorage
     deploy:
       replicas: 2
     labels:
@@ -29,6 +29,7 @@ services:
       - 'traefik.http.routers.instance.rule=Host(`portal.localhost`)'
       - 'traefik.http.routers.instance.entrypoints=web'
       - 'traefik.http.services.instance.loadbalancer.server.port=8080'
+    command: fg
   reverseproxy:
     image: traefik:2.0
     command:
