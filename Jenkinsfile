@@ -30,7 +30,7 @@ pipeline {
             }
             steps {
                 sh "mco shell run 'docker pull docker-staging.imio.be/imioweb/mutual:alpine-$BUILD_ID' -I /^staging.imio.be/"
-                sh "mco shell run 'systemctl restart website-imioweb.service' -I /^staging.imio.be/"
+                sh "mco shell run 'systemctl restart website-zs.service' -I /^staging.imio.be/"
             }
         }
         stage('Deploy to prod ?') {
