@@ -42,7 +42,7 @@ ENV PIP=9.0.3 \
   HOSTNAME_HOST=local \
   PROJECT_ID=imio
 
-RUN mkdir /data && chown imio:imio -R /data
+RUN mkdir /data && chown imio:imio -R /data && chown imio:imio -R /plone
 VOLUME /data/blobstorage
 VOLUME /data/filestorage
 WORKDIR /plone
