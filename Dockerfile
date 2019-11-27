@@ -42,7 +42,7 @@ ENV PIP=9.0.3 \
   HOSTNAME_HOST=local \
   PROJECT_ID=imio
 
-RUN mkdir /data && chown imio:imio -R /data && chown imio:imio -R /plone
+RUN mkdir /data && chown imio:imio -R /data
 VOLUME /data/blobstorage
 VOLUME /data/filestorage
 WORKDIR /plone
@@ -64,6 +64,7 @@ LABEL plone=$PLONE_VERSION \
 
 COPY --from=builder /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
 COPY --chown=imio --from=builder /plone .
+RUN chown imio:imio /plone
 
 COPY --chown=imio docker-initialize.py docker-entrypoint.sh /
 USER imio
