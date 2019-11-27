@@ -31,6 +31,7 @@ dev: bin/pip buildout.cfg
 	./bin/pip install -r requirements.txt
 	./bin/buildout -t 30
 
+bin/buildout: dev
 
 eggs:  ## Copy eggs from docker image to speed up docker build
 	-docker run --entrypoint='' $(IMAGE_NAME) tar -c -C /plone eggs | tar x
@@ -46,3 +47,8 @@ fix-data-permissions: data
 docker-build: eggs
 	docker-compose build
 	make fix-data-permissions
+
+bin/intance: bin/buildout
+
+upgrade: bin/instance
+	./bin/instance run src/collective.upgrade/run-portal-upgrades
