@@ -2,7 +2,7 @@
 .mr.developer.cfg
 .plone.versioncheck.tracked.json
 bin/
-develop-eggs/
+develop-fgggs/
 include/
 lib/
 parts/
@@ -26,3 +26,5 @@ rsync.sh
 eggs/
 data
 lib64
+pyvenv.cfg
+develop-eggs/
