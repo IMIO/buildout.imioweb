@@ -22,6 +22,8 @@ services:
       - ZEO_PORT=8100
     volumes:
       - ./data/blobstorage:/data/blobstorage
+    ports:
+      - 8080
     deploy:
       replicas: 2
     labels:
