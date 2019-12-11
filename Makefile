@@ -54,5 +54,5 @@ create-plonesite: fix-data-permissions
 bin/intance: bin/buildout
 
 upgrade: bin/instance
-	./bin/instance run src/collective.upgrade/run-portal-upgrades
+	docker-compose run instance bin/instance run scripts/run_portal_upgrades
 
