@@ -26,6 +26,7 @@ WORKDIR /plone
 RUN chown imio:imio -R /plone && mkdir /data && chown imio:imio -R /data
 COPY --chown=imio eggs /plone/eggs/
 COPY --chown=imio *.cfg /plone/
+COPY --chown=imio scripts /plone/scripts
 RUN su -c "buildout -c prod.cfg" -s /bin/sh imio
 
 

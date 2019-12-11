@@ -15,11 +15,15 @@ services:
     expose:
       - 8080
     depends_on:
+      - zeo
       - reverseproxy
     environment:
       - ENV=dev
       - ZEO_HOST=zeo
       - ZEO_PORT=8100
+      - ADMIN_PASSWORD=admin
+      - SITE_ID=plone
+      - POLICY_PROFILE=imioweb.policy:default
     volumes:
       - ./data/blobstorage:/data/blobstorage
     ports:

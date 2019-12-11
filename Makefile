@@ -48,7 +48,11 @@ docker-build: eggs
 	docker-compose build
 	make fix-data-permissions
 
+create-plonesite: fix-data-permissions
+	docker-compose run instance bin/instance run scripts/create_plonesite.py
+
 bin/intance: bin/buildout
 
 upgrade: bin/instance
 	./bin/instance run src/collective.upgrade/run-portal-upgrades
+
