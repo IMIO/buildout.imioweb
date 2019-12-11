@@ -41,6 +41,7 @@ ENV PIP=9.0.3 \
   ZEO_HOST=zeo \
   ZEO_PORT=8100 \
   HOSTNAME_HOST=local \
+  POLICY_PROFILE=imioweb.policy:default \
   PROJECT_ID=imio
 
 RUN mkdir /data && chown imio:imio -R /data

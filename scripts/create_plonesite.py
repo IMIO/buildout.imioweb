@@ -73,5 +73,5 @@ def main(app, site_id):
 
 
 if __name__ == "__main__":
-    site_id = os.environ.get("SITE_ID", "plone")
+    site_id = os.environ.get("PROJECT_ID", "plone")
     main(app, site_id)  # noqa

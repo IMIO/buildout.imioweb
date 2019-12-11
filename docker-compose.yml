@@ -22,7 +22,7 @@ services:
       - ZEO_HOST=zeo
       - ZEO_PORT=8100
       - ADMIN_PASSWORD=admin
-      - SITE_ID=plone
+      - PROJECT_ID=plone
       - POLICY_PROFILE=imioweb.policy:default
     volumes:
       - ./data/blobstorage:/data/blobstorage
