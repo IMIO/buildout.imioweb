@@ -55,7 +55,12 @@ pipeline {
         stage('Deploying to prod') {
             agent any
             steps {
-                echo "To be done !"
+                sh "docker pull docker-staging.imio.be/imioweb/mutual:alpine-$BUILD_ID"
+                sh "docker tag docker-staging.imio.be/imioweb/mutual:alpine-$BUILD_ID docker-prod.imio.be/imioweb/mutual:alpine-$BUILD_ID"
+                sh "docker tag docker-staging.imio.be/imioweb/mutual:alpine-$BUILD_ID docker-prod.imio.be/imioweb/mutual:alpine"
+                sh "docker push docker-prod.imio.be/imioweb/mutual:alpine"
+                sh "docker push docker-prod.imio.be/imioweb/mutual:alpine-$BUILD_ID"
+
             }
         }
     }
