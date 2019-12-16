@@ -66,7 +66,7 @@ def main(app, site_id):
 
     # update zope password
     users = app.acl_users.users
-    admin_password = os.environ.get("admin_password", "admin")
+    admin_password = os.environ.get("ADMIN_PASSWORD", "admin")
     users.updateUserPassword("admin", admin_password)
     logger.info("Admin password updated")
     transaction.commit()
