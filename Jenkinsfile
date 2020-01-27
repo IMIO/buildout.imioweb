@@ -66,7 +66,7 @@ pipeline {
     }
     post {
         always {
-            cleanWs()
+            sh "rm -rf data/"
         }
     }
 }
