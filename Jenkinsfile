@@ -66,7 +66,9 @@ pipeline {
     }
     post {
         always {
-            sh "rm -rf data/"
+            node(null)  {
+                sh "rm -rf data/"
+            }
         }
     }
 }
