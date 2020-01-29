@@ -4,7 +4,7 @@ ENV PIP=9.0.3 \
   SETUPTOOLS=41.0.1 \
   WHEEL=0.31.1 \
   PLONE_MAJOR=5.2 \
-  PLONE_VERSION=5.2.0
+  PLONE_VERSION=5.2.1
 
 RUN apk add --update --no-cache --virtual .build-deps \
   build-base \
@@ -27,7 +27,7 @@ RUN chown imio:imio -R /plone && mkdir /data && chown imio:imio -R /data
 # COPY --chown=imio eggs /plone/eggs/
 COPY --chown=imio *.cfg /plone/
 COPY --chown=imio scripts /plone/scripts
-RUN su -c "buildout -c prod.cfg" -s /bin/sh imio
+RUN su -c "buildout -c prod.cfg -t 30" -s /bin/sh imio
 
 
 FROM docker-staging.imio.be/base:alpinepy3
@@ -36,7 +36,7 @@ ENV PIP=9.0.3 \
   ZC_BUILDOUT=2.13.2 \
   SETUPTOOLS=41.0.1 \
   WHEEL=0.31.1 \
-  PLONE_VERSION=5.2.0 \
+  PLONE_VERSION=5.2.1 \
   TZ=Europe/Brussel \
   ZEO_HOST=zeo \
   ZEO_PORT=8100 \
