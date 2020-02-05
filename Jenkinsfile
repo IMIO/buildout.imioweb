@@ -34,35 +34,6 @@ pipeline {
                 sh "mco shell run 'systemctl restart website-zs.service' -I /^staging.imio.be/"
             }
         }
-        stage('Deploy to prod ?') {
-            agent none
-            steps {
-                timeout(time: 24, unit: 'HOURS') {
-                    input (
-                        message: 'Should we deploy to prod ?'
-                    )
-                }
-            }
-            post {
-                aborted {
-                    echo 'In post aborted'
-                }
-                success {
-                    echo 'In post success'
-                }
-            }
-        }
-        stage('Deploying to prod') {
-            agent any
-            steps {
-                sh "docker pull docker-staging.imio.be/imioweb/mutual:alpine-$BUILD_ID"
-                sh "docker tag docker-staging.imio.be/imioweb/mutual:alpine-$BUILD_ID docker-prod.imio.be/imioweb/mutual:alpine-$BUILD_ID"
-                sh "docker tag docker-staging.imio.be/imioweb/mutual:alpine-$BUILD_ID docker-prod.imio.be/imioweb/mutual:alpine"
-                sh "docker push docker-prod.imio.be/imioweb/mutual:alpine"
-                sh "docker push docker-prod.imio.be/imioweb/mutual:alpine-$BUILD_ID"
-
-            }
-        }
     }
     post {
         always {
