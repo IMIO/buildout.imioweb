@@ -20,7 +20,13 @@ cleanall:
 bash:
 	docker-compose run --rm -p 8080:8080 -u imio instance bash
 
-rsync:
+var/filestorage:
+	mkdir -p var/filestorage
+
+var/blobstorage:
+	mkdir -p var/blobstorage
+
+rsync: var/filestorage var/blobstorage
 	rsync -rP imio@site-prod14.imio.be:/srv/instances/imio/filestorage/Data.fs var/filestorage/Data.fs
 	rsync -r --info=progress2 imio@site-prod14.imio.be:/srv/instances/imio/blobstorage/ var/blobstorage/
 
