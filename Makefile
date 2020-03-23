@@ -30,6 +30,12 @@ rsync: var/filestorage var/blobstorage
 	rsync -rP imio@site-prod14.imio.be:/srv/instances/imio/filestorage/Data.fs var/filestorage/Data.fs
 	rsync -r --info=progress2 imio@site-prod14.imio.be:/srv/instances/imio/blobstorage/ var/blobstorage/
 
+rsync-data: var/filestorage var/blobstorage
+	sudo chown -R $(USER):$(USER) data
+	rsync -rP  var/filestorage/Data.fs data/filestorage/Data.fs
+	rsync -r --info=progress2 var/blobstorage/ data/blobstorage/
+	make fix-data-permissions
+
 buildout.cfg:
 	ln -fs dev.cfg buildout.cfg
 

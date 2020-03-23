@@ -1,5 +1,5 @@
 FROM docker-staging.imio.be/base:alpinepy3 as builder
-ENV PIP=9.0.3 \
+ENV PIP=20.0.2\
   ZC_BUILDOUT=2.13.2 \
   SETUPTOOLS=41.0.1 \
   WHEEL=0.31.1 \
@@ -32,7 +32,7 @@ RUN su -c "buildout -c prod.cfg -t 30 -N" -s /bin/sh imio
 
 FROM docker-staging.imio.be/base:alpinepy3
 
-ENV PIP=9.0.3 \
+ENV PIP=20.0.2 \
   ZC_BUILDOUT=2.13.2 \
   SETUPTOOLS=41.0.1 \
   WHEEL=0.31.1 \
@@ -67,6 +67,8 @@ LABEL plone=$PLONE_VERSION \
 COPY --from=builder /usr/local/lib/python3.7/site-packages /usr/local/lib/python3.7/site-packages
 COPY --chown=imio --from=builder /plone .
 RUN chown imio:imio /plone
+# DEBUG tools
+RUN echo 'manylinux1_compatible = True' > /usr/local/lib/python3.7/site-packages/_manylinux.py && pip install py-spy
 
 COPY --chown=imio docker-initialize.py docker-entrypoint.sh /
 USER imio
