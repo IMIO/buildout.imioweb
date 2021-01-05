@@ -1,6 +1,6 @@
 #!/usr/bin/make
 
-IMAGE_NAME="docker-staging.imio.be/imioweb/mutual:alpine"
+IMAGE_NAME="docker-staging.imio.be/imioweb/mutual:latest"
 
 build: dev
 
@@ -11,7 +11,7 @@ run: bin/instance
 	bin/instance fg
 
 docker-image: eggs
-	docker build --pull -t imioweb/mutual:alpine .
+	docker build --pull -t imioweb/mutual:latest .
 
 cleanall:
 	rm -fr develop-eggs downloads eggs parts .installed.cfg lib include bin .mr.developer.cfg local lib64
