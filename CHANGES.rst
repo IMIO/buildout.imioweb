@@ -4,7 +4,10 @@ CHANGELOG
 5.2.3-2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- collective.faceted.taxonomywidget 1.0a7
+
+    - Ensure eea select2 resources is always loaded
+      [laulaz]
 
 
 5.2.3-1 (2021-01-11)
