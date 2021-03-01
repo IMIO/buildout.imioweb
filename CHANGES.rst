@@ -1,7 +1,7 @@
 CHANGELOG
 =========
 
-5.2.3-2 (unreleased)
+5.2.3-2 (2021-03-01)
 --------------------
 
 - collective.faceted.taxonomywidget 1.0a7
