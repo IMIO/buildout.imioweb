@@ -46,7 +46,7 @@ dev: bin/pip buildout.cfg
 bin/buildout: dev
 
 eggs:  ## Copy eggs from docker image to speed up docker build
-	#-docker run --entrypoint='' $(IMAGE_NAME) tar -c -C /plone eggs | tar x
+	-docker run --entrypoint='' $(IMAGE_NAME) tar -c -C /plone eggs | tar x
 	mkdir -p eggs
 
 data:
