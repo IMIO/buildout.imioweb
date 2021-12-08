@@ -24,7 +24,7 @@ RUN apk add --update --no-cache --virtual .build-deps \
   && pip install pip==$PIP setuptools==$SETUPTOOLS zc.buildout==$ZC_BUILDOUT wheel==$WHEEL
 WORKDIR /plone
 RUN chown imio:imio -R /plone && mkdir /data && chown imio:imio -R /data
-#COPY --chown=imio eggs /plone/eggs/
+COPY --chown=imio eggs /plone/eggs/
 COPY --chown=imio *.cfg /plone/
 COPY --chown=imio scripts /plone/scripts
 RUN su -c "buildout -c prod.cfg -t 30" -s /bin/sh imio
@@ -63,15 +63,15 @@ RUN apk add --no-cache --virtual .run-deps \
 LABEL plone=$PLONE_VERSION \
   os="alpine" \
   os.version="3.10" \
-  name="Plone 5.2.0" \
-  description="Plone image for iA.Smartweb" \
+  name="Plone 5.2.5" \
+  description="Plone image for imioweb app on iA.Smartweb project" \
   maintainer="Imio"
 
 COPY --from=builder /usr/local/lib/python3.8/site-packages /usr/local/lib/python3.8/site-packages
 COPY --chown=imio --from=builder /plone .
 RUN chown imio:imio /plone
 # DEBUG tools
-RUN echo 'manylinux1_compatible = True' > /usr/local/lib/python3.8/site-packages/_manylinux.py && pip install py-spy
+# RUN echo 'manylinux1_compatible = True' > /usr/local/lib/python3.8/site-packages/_manylinux.py && pip install py-spy
 
 COPY --chown=imio docker-initialize.py docker-entrypoint.sh /
 USER imio
