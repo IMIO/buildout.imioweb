@@ -4,7 +4,13 @@ CHANGELOG
 5.2.3-3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Add collective.messagesviewlet (0.23)
+  [boulch]
+ 
+- collective.behavior.banner 1.3
+
+    - Fix use of default_page
+      [pbauer]
 
 
 5.2.3-2 (2021-03-01)
