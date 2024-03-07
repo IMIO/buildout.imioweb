@@ -4,6 +4,11 @@ CHANGELOG
 5.2.3-3 (unreleased)
 --------------------
 
+- imioweb.core 1.0a4
+
+    - WEB-4089 : Add recaptcha to contact-info form
+      [boulch]
+
 - Add collective.messagesviewlet (0.23)
   [boulch]
  
