@@ -68,3 +68,5 @@ bin/intance: bin/buildout
 upgrade: bin/instance
 	docker-compose run instance bin/instance run scripts/run_portal_upgrades
 
+test-image:
+	echo "test my image"
