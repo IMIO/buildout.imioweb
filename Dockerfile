@@ -78,7 +78,7 @@ RUN curl -L https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init
 
 LABEL plone=$PLONE_VERSION \
   os="Ubuntu" \
-  os.version="22.04" \
+  os.version="20.04" \
   name="Plone 5.2.5" \
   description="Plone image for imioweb app on iA.Smartweb project" \
   maintainer="iMio"
