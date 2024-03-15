@@ -1,4 +1,4 @@
-FROM harbor.imio.be/common/base:py3-ubuntu-20.04 as builder
+FROM imiobe/base:py3-ubuntu-20.04 as builder
 ENV PIP=19.3.1 \
   ZC_BUILDOUT=2.13.2 \
   SETUPTOOLS=45.0.0 \
@@ -36,7 +36,7 @@ COPY --chown=imio scripts /plone/scripts
 RUN su -c "buildout -c prod.cfg -t 30" -s /bin/sh imio
 
 
-FROM harbor.imio.be/common/base:py3-ubuntu-20.04
+FROM imiobe/base:py3-ubuntu-20.04
 
 ENV PIP=19.3.1 \
   ZC_BUILDOUT=2.13.2 \
