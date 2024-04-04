@@ -4,6 +4,9 @@ CHANGELOG
 5.2.3-3 (unreleased)
 --------------------
 
+- Fix buildout : pinned setuptools = 62.4.0 and cryptography = 3.4
+  [boulch]
+
 - imioweb.core 1.0a4
 
     - WEB-4089 : Add recaptcha to contact-info form
