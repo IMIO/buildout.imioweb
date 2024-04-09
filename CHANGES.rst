@@ -4,6 +4,11 @@ CHANGELOG
 5.2.3-3 (unreleased)
 --------------------
 
+- imioweb.core 1.0a5
+
+    - WEB-4089 : Fix recaptcha field must not be required
+      [boulch]
+
 - Fix buildout : pinned setuptools = 62.4.0 and cryptography = 3.4
   [boulch]
 
